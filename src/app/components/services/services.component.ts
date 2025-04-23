@@ -46,48 +46,21 @@ export class ServicesComponent implements OnInit {
     const phoneNumber: string = '5511949054658';
 
     const messages: { [key: string]: string } = {
-      'Rescisão Contratual':
-        'Olá! Gostaria de saber mais sobre o serviço de Rescisão Contratual.',
-      Reintegração:
-        'Olá! Gostaria de entender como funciona o serviço de Reintegração.',
-      'Assédio Moral':
-        'Olá! Preciso de informações sobre casos de Assédio Moral.',
-      'FGTS Retido': 'Olá! Tenho dúvidas sobre como liberar meu FGTS retido.',
-      'Acidente de Trabalho':
-        'Olá! Quero saber mais sobre os serviços relacionados a Acidente de Trabalho.',
-      'Adicional Noturno':
-        'Olá! Gostaria de saber mais sobre Adicional Noturno.',
-      'Horas Extras':
-        'Olá! Preciso de ajuda com questões relacionadas a Horas Extras.',
-      'Desvio de Função':
-        'Olá! Quero entender como lidar com um Desvio de Função.',
-      'Registro em Carteira':
-        'Olá! Gostaria de mais informações sobre Registro em Carteira.',
-      'Licença-Maternidade':
-        'Olá! Preciso de informações sobre Licença-Maternidade.',
-      'Equiparação Salarial':
-        'Olá! Quero saber mais sobre Equiparação Salarial.',
-      'Assédio Sexual': 'Olá! Preciso de orientação sobre Assédio Sexual.',
-      'Adicional de Insalubridade':
-        'Olá! Gostaria de entender mais sobre Adicional de Insalubridade.',
-      'Acordo Trabalhista':
-        'Olá! Quero mais informações sobre Acordo Trabalhista.',
-      'Reclamação Trabalhista':
-        'Olá! Preciso de ajuda com uma Reclamação Trabalhista.',
-      'Previdência Social': 'Olá! Tenho dúvidas sobre Previdência Social.',
-      'Seguro-Desemprego':
-        'Olá! Gostaria de informações sobre Seguro-Desemprego.',
-      'Demissão por Justa Causa':
-        'Olá! Quero entender como funciona Demissão por Justa Causa.',
-      'Estabilidade Gestante':
-        'Olá! Preciso saber mais sobre Estabilidade Gestante.',
-      'Contratos de Trabalho':
-        'Olá! Quero informações sobre Contratos de Trabalho.',
+      'Compra de Precatório':
+        'Olá! Tenho interesse em vender meu precatório. Pode me explicar como funciona o processo de compra?',
+      'Análise Gratuita':
+        'Olá! Gostaria de solicitar uma análise gratuita do meu precatório.',
+      'Consultoria Legal':
+        'Olá! Preciso de uma consultoria sobre meu precatório. Pode me ajudar?',
+      Documentação:
+        'Olá! Tenho dúvidas sobre a documentação necessária para vender meu precatório.',
+      'Venda Segura':
+        'Olá! Gostaria de entender como funciona a venda segura de um precatório.',
     };
 
     const message =
       messages[option] ||
-      'Olá! Gostaria de mais informações sobre seus serviços.';
+      'Olá! Gostaria de mais informações sobre os serviços de precatórios.';
 
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,

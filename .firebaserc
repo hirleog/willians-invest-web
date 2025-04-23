@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "advogacia-andrade-amaral"
-  }
+    "default": "willians-invest",
+    "dist/willians-invest": "willians-invest"
+  },
+  "targets": {},
+  "etags": {}
 }
