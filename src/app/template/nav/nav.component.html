@@ -1,14 +1,29 @@
-<nav id="nav" [ngClass]="{ 'hidden': scrolled }"  class="navbar navbar-expand-lg navbar-light">
-
-  <div class="collapse navbar-collapse"  data-aos-duration="1000" id="ajustes">
-    <div id="burger" style="display: flex; justify-content: flex-start; padding-top: -10px">
-      <i  (click)="menu()" class="fa-solid fa-bars"></i>
+<nav
+  id="nav"
+  [ngClass]="{ hidden: scrolled }"
+  class="navbar navbar-expand-lg navbar-light"
+>
+  <div class="collapse navbar-collapse" data-aos-duration="1000" id="ajustes">
+    <div
+      id="burger"
+      style="display: flex; justify-content: flex-start; padding-top: -10px"
+    >
+      <i
+        (click)="menu()"
+        class="fa-solid fa-bars"
+        style="font-size: 20px !important"
+      ></i>
     </div>
 
     <div class="navbar-brand" style="display: flex">
       <div class="container">
-        <a  href="#inicio">
-          <img src="../../../assets/logo-white.png" class="container-fluid" alt="error" style="width:5em" />
+        <a href="#inicio">
+          <img
+            src="../../../assets/logo-white.png"
+            class="container-fluid"
+            alt="error"
+            style="width: 5em"
+          />
         </a>
       </div>
     </div>
@@ -19,19 +34,58 @@
   <div class="hide-menu" style="display: flex; justify-content: flex-start">
     <ul class="navbar-nav me-auto mb-lg-0">
       <li class="nav-item">
-        <a [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#home">Página Inicial</a>
+        <a
+          [ngClass]="{ 'nav-link-change': scrolled }"
+          class="nav-link active"
+          aria-current="page"
+          href="#home"
+          >Página Inicial</a
+        >
       </li>
       <li class="nav-item">
-        <a [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#about">Sobre</a>
+        <a
+          [ngClass]="{ 'nav-link-change': scrolled }"
+          class="nav-link active"
+          aria-current="page"
+          href="#about"
+          >Sobre</a
+        >
       </li>
       <li class="nav-item">
-        <a [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#services">Serviços</a>
+        <a
+          [ngClass]="{ 'nav-link-change': scrolled }"
+          class="nav-link active"
+          aria-current="page"
+          href="#services"
+          >Serviços</a
+        >
       </li>
       <li class="nav-item">
-        <a [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#reviews">Clientes</a>
+        <a
+          [ngClass]="{ 'nav-link-change': scrolled }"
+          class="nav-link active"
+          aria-current="page"
+          href="#reviews"
+          >Clientes</a
+        >
       </li>
       <li class="nav-item">
-        <a [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#questions">Perguntas</a>
+        <a
+          [ngClass]="{ 'nav-link-change': scrolled }"
+          class="nav-link active"
+          aria-current="page"
+          href="#questions"
+          >Perguntas</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          [ngClass]="{ 'nav-link-change': scrolled }"
+          class="nav-link active"
+          aria-current="page"
+          href="#form"
+          >Consultar precatório</a
+        >
       </li>
     </ul>
   </div>
@@ -42,19 +96,64 @@
     <div>
       <ul class="navbar-nav">
         <li class="side-item">
-          <a (click)="menu()" [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#home">Pagina Inicial</a>
+          <a
+            (click)="menu()"
+            [ngClass]="{ 'nav-link-change': scrolled }"
+            class="nav-link active"
+            aria-current="page"
+            href="#home"
+            >Pagina Inicial</a
+          >
         </li>
         <li class="side-item">
-          <a (click)="menu()" [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#about">Sobre</a>
+          <a
+            (click)="menu()"
+            [ngClass]="{ 'nav-link-change': scrolled }"
+            class="nav-link active"
+            aria-current="page"
+            href="#about"
+            >Sobre</a
+          >
         </li>
         <li class="side-item">
-          <a (click)="menu()" [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#services">Serviços</a>
+          <a
+            (click)="menu()"
+            [ngClass]="{ 'nav-link-change': scrolled }"
+            class="nav-link active"
+            aria-current="page"
+            href="#services"
+            >Serviços</a
+          >
         </li>
         <li class="side-item">
-          <a (click)="menu()" [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#reviews">Clientes</a>
+          <a
+            (click)="menu()"
+            [ngClass]="{ 'nav-link-change': scrolled }"
+            class="nav-link active"
+            aria-current="page"
+            href="#reviews"
+            >Clientes</a
+          >
         </li>
         <li class="side-item">
-          <a (click)="menu()" [ngClass]="{ 'nav-link-change': scrolled }" class="nav-link active" aria-current="page" href="#questions">Perguntas</a>
+          <a
+            (click)="menu()"
+            [ngClass]="{ 'nav-link-change': scrolled }"
+            class="nav-link active"
+            aria-current="page"
+            href="#questions"
+            >Perguntas</a
+          >
+        </li>
+        <li class="side-item">
+          <a
+            (click)="menu()"
+            [ngClass]="{ 'nav-link-change': scrolled }"
+            class="nav-link active"
+            aria-current="page"
+            href="#form"
+            >Consultar precatório</a
+          >
         </li>
       </ul>
     </div>

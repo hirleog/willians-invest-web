@@ -117,7 +117,7 @@ nav.hidden {
     opacity: 100%;
     transition: all 0.5s ease;
     z-index: 10;
-    margin-top: 113px;
+    margin-top: 103px;
   }
 
   #ajustes {
@@ -194,9 +194,9 @@ nav.hidden {
 @media (max-width: 768px) {
   .navbar-expand-lg {
     width: 100%;
-    opacity: 95%;
+    /* opacity: 95%; */
     position: fixed;
     z-index: 10;
-    background-color: var(--secondary-light) !important;
+    /* background-color: var(--secondary-light) !important; */
   }
 }

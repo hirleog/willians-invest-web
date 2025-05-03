@@ -14,6 +14,8 @@ import { ServicesComponent } from './components/services/services.component';
 import { WppBtnComponent } from './components/wpp-btn/wpp-btn.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { NavComponent } from './template/nav/nav.component';
+import { FormViewComponent } from './components/form-view/form-view.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,13 +30,15 @@ import { NavComponent } from './template/nav/nav.component';
     QuestionsComponent,
     MidBannerComponent,
     WppBtnComponent,
+    FormViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

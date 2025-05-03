@@ -1,0 +1,123 @@
+<section id="form">
+  <div class="d-md-flex container my-5">
+    <div class="left-content col-md-7">
+      <div
+        id="content-section"
+        class="content container"
+        data-aos="fade-down"
+        data-aos-duration="900"
+      >
+        <div style="display: flex">
+          <p class="title-detail">Consulte Agora</p>
+        </div>
+        <div class="row">
+          <!-- <h2 class="col-12">Por que você precisa dos melhores advogados.</h2> -->
+          <h2 class="col-12">Consulte grátis seu precátorio</h2>
+        </div>
+        <div class="hero-btn mb-3 mt-3">
+          <a class="view-more-btn mb-3"></a>
+        </div>
+        <p class="pb-3" style="font-size: larger; font-weight: bold">
+          Preencha o formulario para falar com nossos especialistas e descobrir
+          o valor do seu precatório. Nossa equipe está pronta para ajudar você a
+          entender o processo e
+          <span class="highlight">maximizar</span> o valor do seu precatório.
+        </p>
+      </div>
+    </div>
+
+    <div class="container col-md-5" data-aos="fade-right" data-aos-duration="600" style="background-color: var(--secondary); padding: 2em;">
+      <div class="container ">
+        <!-- <h2 class="mb-4">Formulário de Cadastro</h2> -->
+        <form
+          [formGroup]="formulario"
+          (ngSubmit)="enviarFormulario()"
+          novalidate
+        >
+          <div class="mb-3">
+            <label for="nome" class="form-label"
+              >Nome <span class="text-danger">*</span></label
+            >
+            <input
+              id="nome"
+              type="text"
+              class="form-control"
+              formControlName="nome"
+              [ngClass]="{
+                'is-invalid':
+                  formulario.get('nome')?.invalid &&
+                  formulario.get('nome')?.touched
+              }"
+            />
+            <div class="invalid-feedback">Nome é obrigatório.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label"
+              >Email <span class="text-danger">*</span></label
+            >
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              formControlName="email"
+              [ngClass]="{
+                'is-invalid':
+                  formulario.get('email')?.invalid &&
+                  formulario.get('email')?.touched
+              }"
+            />
+            <div class="invalid-feedback">Informe um email válido.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="cpf" class="form-label"
+              >CPF <span class="text-danger">*</span></label
+            >
+            <input
+              id="cpf"
+              type="text"
+              class="form-control"
+              formControlName="cpf"
+              [ngClass]="{
+                'is-invalid':
+                  formulario.get('cpf')?.invalid &&
+                  formulario.get('cpf')?.touched
+              }"
+            />
+            <div class="invalid-feedback">Informe um CPF com 11 dígitos.</div>
+            <small class="form-text text-muted">Somente Dígitos</small>
+
+          </div>
+
+          <div class="mb-3">
+            <label for="telefone" class="form-label"
+              >WhatsApp <span class="text-danger">*</span></label
+            >
+            <input
+              id="telefone"
+              type="text"
+              class="form-control"
+              formControlName="telefone"
+              [ngClass]="{
+                'is-invalid':
+                  formulario.get('telefone')?.invalid &&
+                  formulario.get('telefone')?.touched
+              }"
+            />
+            <div class="invalid-feedback">Telefone é obrigatório.</div>
+            <small class="form-text text-muted">DDD + Número</small>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg ui-button mr-5"
+            style="color: var(--secondary-detail)"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

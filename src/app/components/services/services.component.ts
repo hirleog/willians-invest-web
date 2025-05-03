@@ -43,7 +43,7 @@ export class ServicesComponent implements OnInit {
   public goToServices(): void {}
 
   public wppMessageOptions(option: string): void {
-    const phoneNumber: string = '5511949054658';
+    const phoneNumber: string = '5511989483916';
 
     const messages: { [key: string]: string } = {
       'Compra de Precatório':
