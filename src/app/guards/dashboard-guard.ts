@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import {
+  ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardGuard implements CanActivate {
-  private readonly tokenValido = environment.urlToken; // pode vir do environment.ts
-
   constructor(private router: Router) {}
 
   canActivate(
