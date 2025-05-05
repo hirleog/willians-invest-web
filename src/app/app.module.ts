@@ -15,7 +15,10 @@ import { WppBtnComponent } from './components/wpp-btn/wpp-btn.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { NavComponent } from './template/nav/nav.component';
 import { FormViewComponent } from './components/form-view/form-view.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardViewComponent } from './components/dashboard-view/dashboard-view.component';
+
+
 
 @NgModule({
   declarations: [
@@ -31,12 +34,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     MidBannerComponent,
     WppBtnComponent,
     FormViewComponent,
+    DashboardViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,114 @@
+<section
+  id="dash"
+  style="padding: 5em 0px 0px 0px"
+  [ngStyle]="{ backgroundColor: '#2a3d55', color: '#fff' }"
+>
+  <div style="padding: 7em">
+    <h2 class="text-start mb-4" style="color: var(--secondary)">
+      Painel de Contatos
+    </h2>
+
+    <div class="d-flex justify-content-end mb-3">
+      <button
+        style="background-color: var(--primary); color: var(--secondary)"
+        (click)="mostrarNaoContatados = !mostrarNaoContatados"
+      >
+        {{ mostrarNaoContatados ? "Mostrar Todos" : "Mostrar Não Contatados" }}
+      </button>
+    </div>
+
+    <table
+      class="table table-dark table-hover table-bordered align-middle text-white"
+    >
+      <thead class="table-light" style="color: #2a3d55">
+        <tr>
+          <th scope="col">Contatado</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Data do registro</th>
+          <th scope="col">Observações</th>
+          <th scope="col">Ação</th>
+          <!-- NOVA COLUNA -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contato of contatosFiltrados()">
+          <td>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              [(ngModel)]="contato.contatado"
+            />
+          </td>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.email }}</td>
+          <td>{{ contato.cpf }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>{{ contato.createdAt | date : "dd/MM/yyyy" }}</td>
+          <td>
+            <textarea
+              class="form-control"
+              [ngStyle]="{ backgroundColor: '#fff', color: '#000' }"
+              rows="1"
+              [(ngModel)]="contato.observacao"
+              (input)="marcarComoContatado(contato)"
+            ></textarea>
+          </td>
+          <td>
+            <button
+              style="background-color: var(--primary); color: var(--secondary)"
+              class="btn-sm"
+              (click)="
+                atualizarContato(
+                  contato.id,
+                  contato.contatado,
+                  contato.observacao
+                )
+              "
+            >
+              Salvar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end align-items-center mt-4">
+      <button
+        class="btn-primary btn-sm me-2"
+        [disabled]="paginaAtual === 1"
+        (click)="mudarPagina(-1)"
+      >
+        Anterior
+      </button>
+
+      <span style="color: var(--secondary)">
+        Página {{ paginaAtual }} de {{ totalPaginas }}
+      </span>
+
+      <button
+        class="btn-primary btn-sm ms-2"
+        [disabled]="paginaAtual === totalPaginas"
+        (click)="mudarPagina(1)"
+      >
+        Próxima
+      </button>
+    </div>
+  </div>
+</section>
+
+<div
+  [ngClass]="alertIndicator === true ? 'alert-sucess' : 'alert-error'"
+  class="alert alert-info alert-dismissible fade show z-index-1000"
+  *ngIf="showAlert"
+  role="alert"
+>
+  {{ alertMessage }}
+  <button
+    type="button"
+    class="btn-close"
+    (click)="showAlert = false"
+    aria-label="Close"
+  ></button>
+</div>

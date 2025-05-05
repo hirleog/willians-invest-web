@@ -1,22 +1,29 @@
 <app-nav></app-nav>
-<app-hero></app-hero>
 
-<app-services></app-services>
-<app-form-view></app-form-view>
-<app-mid-banner></app-mid-banner>
-<app-about></app-about>
+<div *ngIf="isDashboard === false">
+  <app-hero></app-hero>
 
-<app-client-reviews></app-client-reviews>
+  <app-services></app-services>
+  <app-form-view></app-form-view>
+  <app-mid-banner></app-mid-banner>
+  <app-about></app-about>
 
-<app-questions></app-questions>
+  <app-client-reviews></app-client-reviews>
+
+  <app-questions></app-questions>
+
+  <a href="#home" class="btn-topo"> &#x2191; </a>
+  <a
+    href="https://wa.me/5511989483916?text=Olá, tudo bem? Gostaria de esclarecer algumas duvidas e saber mais sobre os serviços!"
+    class="btn-whatsapp"
+    target="_blank"
+    style="position: fixed; right: 15px; bottom: 15px; z-index: 10"
+  >
+    <img src="../assets/whatsapp-button.webp" alt="botão whatsapp" />
+  </a>
+</div>
+
+<!-- // logica para apresentar o Dashboard -->
+<app-dashboard *ngIf="isDashboard === true"></app-dashboard>
+
 <app-footer></app-footer>
-
-<a href="#home" class="btn-topo"> &#x2191; </a>
-<a
-  href="https://wa.me/5511989483916?text=Olá, tudo bem? Gostaria de esclarecer algumas duvidas e saber mais sobre os serviços!"
-  class="btn-whatsapp"
-  target="_blank"
-  style="position: fixed; right: 15px; bottom: 15px; z-index: 10"
->
-  <img src="../assets/whatsapp-button.webp" alt="botão whatsapp" />
-</a>
