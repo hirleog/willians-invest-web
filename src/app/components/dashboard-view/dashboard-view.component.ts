@@ -85,16 +85,17 @@ export class DashboardViewComponent implements OnInit {
   // }
 
   marcarComoContatado(contato: any) {
-    if (contato.observacao?.trim()) {
-      contato.contatado = true;
-    }
+    // if (contato.observacao?.trim()) {
+    //   contato.contatado = true;
+    // }
   }
 
   // paginação
   get totalPaginas(): number {
-    return Math.ceil(
-      this.contatosFiltradosSemPaginacao().length / this.itensPorPagina
-    );
+    return 1
+    // return Math.ceil(
+    //   this.contatosFiltradosSemPaginacao().length / this.itensPorPagina
+    // );
   }
 
   contatosFiltradosSemPaginacao() {
@@ -107,12 +108,12 @@ export class DashboardViewComponent implements OnInit {
     let lista = this.contatos;
 
     if (this.mostrarNaoContatados) {
-      lista = lista.filter((c: any) => !c.contatado);
+      lista = lista?.filter((c: any) => !c.contatado);
     }
 
     const inicio = (this.paginaAtual - 1) * this.itensPorPagina;
     const fim = inicio + this.itensPorPagina;
-    return lista.slice(inicio, fim);
+    return lista?.slice(inicio, fim);
   }
 
   mudarPagina(delta: number) {

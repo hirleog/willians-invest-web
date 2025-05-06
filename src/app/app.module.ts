@@ -17,6 +17,7 @@ import { NavComponent } from './template/nav/nav.component';
 import { FormViewComponent } from './components/form-view/form-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardViewComponent } from './components/dashboard-view/dashboard-view.component';
+import { DashboardViewModule } from './components/dashboard-view/dashboard-view.module';
 
 
 
@@ -34,7 +35,7 @@ import { DashboardViewComponent } from './components/dashboard-view/dashboard-vi
     MidBannerComponent,
     WppBtnComponent,
     FormViewComponent,
-    DashboardViewComponent,
+    // DashboardViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +43,8 @@ import { DashboardViewComponent } from './components/dashboard-view/dashboard-vi
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+
+    DashboardViewModule
   ],
   providers: [],
   bootstrap: [AppComponent],
