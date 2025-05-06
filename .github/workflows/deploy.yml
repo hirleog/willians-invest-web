@@ -30,10 +30,9 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Deploy files
+      - name: Enviar arquivos via SCP
         run: |
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.SERVER_IP }} "mkdir -p /var/www/projects/frontend/willians-invest"
-          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r dist/willians-invest-web/* ${{ secrets.DEPLOY_USER }}@${{ secrets.SERVER_IP }}:/var/www/projects/frontend/willians-invest/
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r dist/willians-invest/* root@89.116.73.70:${{ steps.project.outputs.dest_dir }}
 
       - name: Fix permissions
         run: |
