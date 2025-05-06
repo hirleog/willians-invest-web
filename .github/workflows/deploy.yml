@@ -32,7 +32,7 @@ jobs:
 
       - name: Enviar arquivos via SCP
         run: |
-          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r dist/willians-invest/* root@89.116.73.70:${{ steps.project.outputs.dest_dir }}
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r dist/willians-invest/* deployer@89.116.73.70:${{ steps.project.outputs.dest_dir }}
 
       - name: Fix permissions
         run: |
