@@ -28,13 +28,8 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          cat <<EOF > ~/.ssh/config
-          Host willians-vps
-            HostName ${{ secrets.SERVER_IP }}
-            User ${{ secrets.DEPLOY_USER }}
-            IdentityFile ~/.ssh/deploy_key
-            StrictHostKeyChecking no
-          EOF
+          echo -e "Host willians-vps\n  HostName ${{ secrets.SERVER_IP }}\n  User ${{ secrets.DEPLOY_USER }}\n  IdentityFile ~/.ssh/deploy_key\n  StrictHostKeyChecking no" > ~/.ssh/config
+          cat ~/.ssh/config
           chmod 600 ~/.ssh/config
 
       - name: Deploy files
@@ -44,5 +39,5 @@ jobs:
 
       - name: Fix permissions
         run: |
-          ssh willians-vps "chown -R www-data:www-data /var/www/projects/frontend/willians-invest"
-          ssh willians-vps "systemctl restart nginx"
+          ssh willians-vps "sudo chown -R www-data:www-data /var/www/projects/frontend/willians-invest"
+          ssh willians-vps "sudo systemctl restart nginx"
