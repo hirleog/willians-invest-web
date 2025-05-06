@@ -1,0 +1,61 @@
+name: Deploy Automático
+
+on:
+  push:
+    branches: ["master"] # Alterado para 'main' (ou mantenha 'master' se for seu caso)
+    paths:
+      - "**" # Monitora todas as alterações no repositório
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Identificar projeto
+        id: project
+        run: |
+          echo "::set-output name=dest_dir::/var/www/projects/frontend/willians-invest/"
+          echo "::set-output name=project_name::willians-invest-web"
+
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Instalar dependências
+        run: npm install --force
+
+      - name: Buildar projeto
+        run: npm run build -- --configuration=production
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          cat >>~/.ssh/config <<EOF
+          Host willians-invest-vps
+            HostName ${{ secrets.SERVER_IP }}
+            User ${{ secrets.DEPLOY_USER }}
+            IdentityFile ~/.ssh/deploy_key
+            StrictHostKeyChecking no
+          EOF
+
+      - name: Enviar arquivos para o servidor
+        run: |
+          # Cria o diretório remoto se não existir
+          ssh willians-invest-vps "mkdir -p ${{ steps.project.outputs.dest_dir }}"
+
+          # Envia os arquivos do build
+          scp -rp dist/${{ steps.project.outputs.project_name }}/* willians-invest-vps:${{ steps.project.outputs.dest_dir }}
+
+      - name: Ajustar permissões e reiniciar Nginx
+        run: |
+          ssh willians-invest-vps "
+            sudo chown -R www-data:www-data ${{ steps.project.outputs.dest_dir }}
+            sudo systemctl restart nginx
+          "

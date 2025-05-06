@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'http://localhost:3000', // URL da API do backend
-  apiUrl: 'http://89.116.73.70:3000', // URL da API do backend
+  apiUrl: 'http://localhost:3000', // URL da API do backend
+  // apiUrl: 'http://89.116.73.70:3000', // URL da API do backend
   urlToken: 'admin',
   adminKey: '28d4639e283f488d36b2ae20ca3e28ce62ba9a47374c76a3180317b7d865e55a', // chave secreta para o dashboard
 };
