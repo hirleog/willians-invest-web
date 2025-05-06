@@ -9,53 +9,40 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Identificar projeto
-        id: project
-        run: |
-          echo "::set-output name=dest_dir::/var/www/projects/frontend/willians-invest/"
-          echo "::set-output name=project_name::willians-invest-web"
+      - uses: actions/checkout@v4
 
-      - name: Checkout do código
-        uses: actions/checkout@v4
-
-      - name: Instalar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
-      - name: Instalar dependências
+      - name: Install dependencies
         run: npm install --force
 
-      - name: Buildar projeto
+      - name: Build project
         run: npm run build -- --configuration=production
 
-      - name: Configurar SSH
+      - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          cat >>~/.ssh/config <<EOF
-          Host willians-invest-vps
+          cat <<EOF > ~/.ssh/config
+          Host willians-vps
             HostName ${{ secrets.SERVER_IP }}
             User ${{ secrets.DEPLOY_USER }}
             IdentityFile ~/.ssh/deploy_key
             StrictHostKeyChecking no
           EOF
+          chmod 600 ~/.ssh/config
 
-      - name: Enviar arquivos para o servidor
+      - name: Deploy files
         run: |
-          # Cria o diretório remoto se não existir
-          ssh willians-invest-vps "mkdir -p ${{ steps.project.outputs.dest_dir }}"
+          ssh willians-vps "mkdir -p /var/www/projects/frontend/willians-invest"
+          scp -r dist/willians-invest-web/* willians-vps:/var/www/projects/frontend/willians-invest/
 
-          # Envia os arquivos do build
-          scp -rp dist/${{ steps.project.outputs.project_name }}/* willians-invest-vps:${{ steps.project.outputs.dest_dir }}
-
-      - name: Ajustar permissões e reiniciar Nginx
+      - name: Fix permissions
         run: |
-          ssh willians-invest-vps "
-            sudo chown -R www-data:www-data ${{ steps.project.outputs.dest_dir }}
-            sudo systemctl restart nginx
-          "
+          ssh willians-vps "chown -R www-data:www-data /var/www/projects/frontend/willians-invest"
+          ssh willians-vps "systemctl restart nginx"
