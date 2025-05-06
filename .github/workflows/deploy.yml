@@ -26,11 +26,21 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          echo -e "Host willians-vps\n  HostName ${{ secrets.SERVER_IP }}\n  User ${{ secrets.DEPLOY_USER }}\n  IdentityFile ~/.ssh/deploy_key\n  StrictHostKeyChecking no" > ~/.ssh/config
+
+          echo "Host willians-vps" > ~/.ssh/config
+          echo "  HostName ${{ secrets.SERVER_IP }}" >> ~/.ssh/config
+          echo "  User ${{ secrets.DEPLOY_USER }}" >> ~/.ssh/config
+          echo "  IdentityFile ~/.ssh/deploy_key" >> ~/.ssh/config
+          echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+
+          echo "Conteúdo do arquivo config:"
           cat ~/.ssh/config
           chmod 600 ~/.ssh/config
+
+      - name: Test SSH connection
+        run: ssh -T willians-vps echo "SSH connection successful!"
 
       - name: Deploy files
         run: |
