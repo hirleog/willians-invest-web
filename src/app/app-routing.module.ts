@@ -11,8 +11,6 @@ const routes: Routes = [
         (m) => m.DashboardViewModule
       ),
   },
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({

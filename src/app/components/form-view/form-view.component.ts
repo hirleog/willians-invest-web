@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-form-view',
@@ -25,9 +26,9 @@ export class FormViewComponent implements OnInit {
     const formData = { ...this.formulario.value };
     formData.cpf = formData.cpf.replace(/[.-]/g, ''); // Remove pontos e traços do CPF
     formData.telefone = formData.telefone.replace(/[-()\s]/g, ''); // Remove traços, parênteses e espaços do telefone
-    
+
     if (this.formulario.valid) {
-      this.http.post('http://localhost:3000/form', formData).subscribe({
+      this.http.post(`${environment.apiUrl}/form`, formData).subscribe({
         next: () => {
           alert('Dados enviados com sucesso!');
           this.formulario.reset();
