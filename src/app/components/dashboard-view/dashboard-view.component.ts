@@ -78,24 +78,57 @@ export class DashboardViewComponent implements OnInit {
       });
   }
 
-  // contatosContatados() {
-  //   return this.mostrarNaoContatados
-  //     ? this.contatos.filter((c: any) => !c.contatado)
-  //     : this.contatos;
-  // }
+
+  excluirContato(id: number) {
+    const headers = new HttpHeaders({
+      'x-admin-key': environment.adminKey,
+      'Content-Type': 'application/json',
+    });
+
+    if (confirm('Tem certeza que deseja excluir este contato?')) {
+      this.http
+        .delete(`${environment.apiUrl}/form/${id}`, { headers })
+        .subscribe({
+          next: (res) => {
+            this.carregarContatos(); // recarrega a lista após exclusão
+            this.showAlert = true;
+            this.alertIndicator = true;
+            this.alertMessage = 'Contato excluído com sucesso!';
+
+            setTimeout(() => {
+              this.showAlert = false;
+            }, 1500);
+          },
+          error: (err) => {
+            this.alertIndicator = false;
+            this.showAlert = true;
+            this.alertMessage = 'Erro ao excluir contato!';
+
+            setTimeout(() => {
+              this.showAlert = false;
+            }, 1500);
+          },
+        });
+    }
+  }
+
+  contatosContatados() {
+    return this.mostrarNaoContatados
+      ? this.contatos.filter((c: any) => !c.contatado)
+      : this.contatos;
+  }
 
   marcarComoContatado(contato: any) {
-    // if (contato.observacao?.trim()) {
-    //   contato.contatado = true;
-    // }
+    if (contato.observacao?.trim()) {
+      contato.contatado = true;
+    }
   }
 
   // paginação
   get totalPaginas(): number {
-    return 1
-    // return Math.ceil(
-    //   this.contatosFiltradosSemPaginacao().length / this.itensPorPagina
-    // );
+    return Math.ceil(
+      this.contatosFiltradosSemPaginacao().length / this.itensPorPagina
+    );
   }
 
   contatosFiltradosSemPaginacao() {
