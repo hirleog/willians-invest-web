@@ -26,7 +26,7 @@ html body {
 }
 
 .nav-link:hover {
-  border-bottom: solid 4px var(--secondary-dark);
+  border-bottom: solid 4px var(--primary);
   color: var(--primary);
 }
 
