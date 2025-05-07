@@ -18,3 +18,18 @@
   border: 1px solid var(--primary);
   color: var(--secondary);
 }
+.table-nowrap td,
+.table-nowrap th {
+  white-space: nowrap;
+  /* padding-left: 1.5rem;
+  padding-right: 1.5rem; */
+}
+
+@media (max-width: 768px) {
+  .table-nowrap td,
+  .table-nowrap th {
+    white-space: nowrap;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

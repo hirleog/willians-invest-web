@@ -78,6 +78,57 @@ export class DashboardViewComponent implements OnInit {
       });
   }
 
+  salvarTodasModificacoes() {
+    const headers = new HttpHeaders({
+      'x-admin-key': environment.adminKey,
+      'Content-Type': 'application/json',
+    });
+
+    let contatosAtualizados = this.contatos.filter(
+      (contato: any) =>
+        contato.contatado !== contato.contatadoOriginal ||
+        contato.observacao !== contato.observacaoOriginal
+    );
+
+    if (contatosAtualizados.length === 0) {
+      this.showAlert = true;
+      this.alertIndicator = true;
+      this.alertMessage = 'Não há modificações para salvar!';
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 1500);
+      return;
+    }
+
+    contatosAtualizados.forEach((contato: any) => {
+      const body = {
+        contatado: contato.contatado,
+        observacao: contato.observacao,
+      };
+
+      this.http
+        .put(`${environment.apiUrl}/form/${contato.id}`, body, { headers })
+        .subscribe({
+          next: (res) => {
+            this.carregarContatos(); // recarrega a lista de contatos
+            this.showAlert = true;
+            this.alertIndicator = true;
+            this.alertMessage = 'Contatos atualizados com sucesso!';
+            setTimeout(() => {
+              this.showAlert = false;
+            }, 1500);
+          },
+          error: (err) => {
+            this.showAlert = true;
+            this.alertIndicator = false;
+            this.alertMessage = 'Erro ao atualizar contatos!';
+            setTimeout(() => {
+              this.showAlert = false;
+            }, 1500);
+          },
+        });
+    });
+  }
 
   excluirContato(id: number) {
     const headers = new HttpHeaders({
@@ -153,6 +204,16 @@ export class DashboardViewComponent implements OnInit {
     const novaPagina = this.paginaAtual + delta;
     if (novaPagina >= 1 && novaPagina <= this.totalPaginas) {
       this.paginaAtual = novaPagina;
+    }
+  }
+
+  inserirData(contato: any) {
+    const dataAtual = new Date().toLocaleDateString('pt-BR');
+    const linha = `[${dataAtual}] `;
+    if (contato.observacao) {
+      contato.observacao += '\n' + linha;
+    } else {
+      contato.observacao = linha;
     }
   }
 }
