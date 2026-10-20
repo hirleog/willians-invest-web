@@ -11,9 +11,15 @@
 }
 
 .about-lead {
-  color: #e2e8f0;
+  color: #f1f5f9;
   font-size: 16.5px;
   line-height: 1.7;
+}
+
+.about-text {
+  color: #cbd5e1;
+  font-size: 15.5px;
+  line-height: 1.75;
 }
 
 /* Grid de Pilares Institucionais */
