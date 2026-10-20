@@ -1,166 +1,85 @@
 <nav
   id="nav"
-  [ngClass]="{ hidden: scrolled }"
-  class="navbar navbar-expand-lg navbar-light"
+  [ngClass]="{ hidden: scrolled, 'nav-scrolled': scrolled }"
+  class="navbar navbar-expand-lg"
 >
-  <div class="collapse navbar-collapse" data-aos-duration="1000" id="ajustes">
-    <div
-      id="burger"
-      *ngIf="isDashboard === false"
-      style="display: flex; justify-content: flex-start; padding-top: -10px"
-    >
-      <i
-        (click)="menu()"
-        class="fa-solid fa-bars"
-        style="font-size: 20px !important"
-      ></i>
+  <div class="container d-flex align-items-center justify-content-between">
+    <!-- Brand / Logo -->
+    <a href="#home" class="navbar-brand d-flex align-items-center py-1">
+      <img
+        src="../../../assets/logo-gold.png"
+        alt="Willians Invest - Negócios em Precatórios"
+        class="nav-logo"
+      />
+    </a>
+
+    <!-- Hamburger icon for mobile -->
+    <div id="burger" *ngIf="isDashboard === false" class="d-lg-none">
+      <button class="burger-btn" (click)="menu()" aria-label="Abrir Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
 
-    <div class="navbar-brand" style="display: flex">
-      <div class="container">
-        <a href="#inicio">
-          <img
-            src="../../../assets/logo-white.png"
-            class="container-fluid"
-            alt="error"
-            style="width: 5em; padding: 0px 0px"
-          />
-        </a>
-      </div>
+    <!-- Desktop Navigation Links -->
+    <div *ngIf="isDashboard === false" class="hide-menu d-none d-lg-flex align-items-center">
+      <ul class="navbar-nav me-4 mb-0 d-flex flex-row align-items-center gap-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Serviços</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#checklist">Documentos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">Sobre Nós</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#questions">FAQ</a>
+        </li>
+      </ul>
+
+      <!-- CTA Button in Navbar -->
+      <a href="#form" class="btn btn-sm btn-gold nav-cta-btn">
+        <i class="fa-solid fa-calculator me-1"></i> Consultar Grátis
+      </a>
     </div>
-
-    <div id="fake"></div>
-  </div>
-
-  <div
-    *ngIf="isDashboard === false"
-    class="hide-menu"
-    style="display: flex; justify-content: flex-start"
-  >
-    <ul class="navbar-nav me-auto mb-lg-0">
-      <li class="nav-item">
-        <a
-          [ngClass]="{ 'nav-link-change': scrolled }"
-          class="nav-link active"
-          aria-current="page"
-          href="#home"
-          >Página Inicial</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          [ngClass]="{ 'nav-link-change': scrolled }"
-          class="nav-link active"
-          aria-current="page"
-          href="#about"
-          >Sobre</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          [ngClass]="{ 'nav-link-change': scrolled }"
-          class="nav-link active"
-          aria-current="page"
-          href="#services"
-          >Serviços</a
-        >
-      </li>
-      <!-- <li class="nav-item">
-        <a
-          [ngClass]="{ 'nav-link-change': scrolled }"
-          class="nav-link active"
-          aria-current="page"
-          href="#reviews"
-          >Clientes</a
-        >
-      </li> -->
-      <li class="nav-item">
-        <a
-          [ngClass]="{ 'nav-link-change': scrolled }"
-          class="nav-link active"
-          aria-current="page"
-          href="#questions"
-          >Perguntas</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          [ngClass]="{ 'nav-link-change': scrolled }"
-          class="nav-link active"
-          aria-current="page"
-          href="#form"
-          >Consultar precatório</a
-        >
-      </li>
-    </ul>
   </div>
 </nav>
 
-<div data-aos="fade-right" class="side-bar" *ngIf="openClose">
-  <div class="container">
-    <div>
-      <ul class="navbar-nav">
-        <li class="side-item">
-          <a
-            (click)="menu()"
-            [ngClass]="{ 'nav-link-change': scrolled }"
-            class="nav-link active"
-            aria-current="page"
-            href="#home"
-            >Pagina Inicial</a
-          >
-        </li>
-        <li class="side-item">
-          <a
-            (click)="menu()"
-            [ngClass]="{ 'nav-link-change': scrolled }"
-            class="nav-link active"
-            aria-current="page"
-            href="#about"
-            >Sobre</a
-          >
-        </li>
-        <li class="side-item">
-          <a
-            (click)="menu()"
-            [ngClass]="{ 'nav-link-change': scrolled }"
-            class="nav-link active"
-            aria-current="page"
-            href="#services"
-            >Serviços</a
-          >
-        </li>
-        <!-- <li class="side-item">
-          <a
-            (click)="menu()"
-            [ngClass]="{ 'nav-link-change': scrolled }"
-            class="nav-link active"
-            aria-current="page"
-            href="#reviews"
-            >Clientes</a
-          >
-        </li> -->
-        <li class="side-item">
-          <a
-            (click)="menu()"
-            [ngClass]="{ 'nav-link-change': scrolled }"
-            class="nav-link active"
-            aria-current="page"
-            href="#questions"
-            >Perguntas</a
-          >
-        </li>
-        <li class="side-item">
-          <a
-            (click)="menu()"
-            [ngClass]="{ 'nav-link-change': scrolled }"
-            class="nav-link active"
-            aria-current="page"
-            href="#form"
-            >Consultar precatório</a
-          >
-        </li>
-      </ul>
-    </div>
+<!-- Mobile Sidebar Drawer -->
+<div class="side-bar" *ngIf="openClose">
+  <div class="d-flex justify-content-between align-items-center mb-4 px-3">
+    <img
+      src="../../../assets/logo-gold.png"
+      alt="Willians Invest"
+      style="height: 40px; width: auto;"
+    />
+    <button class="close-btn" (click)="menu()" aria-label="Fechar Menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
   </div>
+  <ul class="navbar-nav px-3">
+    <li class="side-item">
+      <a (click)="menu()" class="nav-link" href="#home">Início</a>
+    </li>
+    <li class="side-item">
+      <a (click)="menu()" class="nav-link" href="#services">Serviços</a>
+    </li>
+    <li class="side-item">
+      <a (click)="menu()" class="nav-link" href="#checklist">Documentos Necessários</a>
+    </li>
+    <li class="side-item">
+      <a (click)="menu()" class="nav-link" href="#about">Sobre a Willians Invest</a>
+    </li>
+    <li class="side-item">
+      <a (click)="menu()" class="nav-link" href="#questions">Dúvidas Frequentes</a>
+    </li>
+    <li class="side-item mt-3">
+      <a (click)="menu()" class="btn btn-gold w-100 text-center" href="#form">
+        Consultar Precatório
+      </a>
+    </li>
+  </ul>
 </div>

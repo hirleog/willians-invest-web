@@ -8,40 +8,34 @@ import { Component, OnInit } from '@angular/core';
 export class QuestionsComponent implements OnInit {
   faqs = [
     {
-      pergunta: 'O que é um precatório?',
+      pergunta: 'O que é a antecipação ou cessão de precatórios?',
       resposta:
-        'É uma ordem de pagamento emitida pelo governo após uma decisão judicial definitiva em que o Estado é condenado a pagar determinada quantia.',
-      show: 'true',
+        'A antecipação de precatórios é um direito assegurado pela Constituição Federal que permite ao credor transferir seu título judicial a investidores e receber o valor à vista em sua conta bancária, evitando as longas filas e a demora do setor público.',
     },
     {
-      pergunta: 'Posso vender meu precatório?',
+      pergunta: 'É seguro e legal vender o meu precatório?',
       resposta:
-        'Sim, a Constituição permite a cessão de créditos. A venda é legal e pode ser uma solução para quem não quer esperar anos para receber.',
-      show: 'false',
+        'Sim, 100% legal e seguro. A negociação é formalizada por meio de Escritura Pública ou Contrato de Cessão de Crédito registrado em cartório e subsequentemente protocolado e homologado pelo juiz nos autos do processo.',
     },
     {
-      pergunta: 'Quanto vale meu precatório?',
+      pergunta: 'Quanto tempo leva para o dinheiro cair na minha conta?',
       resposta:
-        'O valor de mercado depende de vários fatores, como tipo (federal, estadual ou municipal), tempo estimado para pagamento e regularidade documental. Fazemos essa avaliação gratuitamente.',
-      show: 'false',
+        'Após o envio da documentação e a conferência jurídica (que leva em média de 24h a 48h úteis), a formalização é assinada e o pagamento é transferido via TED ou PIX diretamente para a conta de sua titularidade.',
     },
     {
-      pergunta: 'Como é feita a negociação?',
+      pergunta: 'Quais tipos de precatórios a Willians Invest negocia?',
       resposta:
-        'Após a análise e aprovação da documentação, apresentamos uma proposta. Caso aceite, formalizamos por contrato e realizamos o pagamento.',
-      show: 'false',
+        'Negociamos Precatórios Federais (TRF1 a TRF6, incluindo ações contra INSS, União e órgãos federais), Precatórios Estaduais e Precatórios Municipais de diversas regiões do país.',
     },
     {
-      pergunta: 'É seguro vender meu precatório?',
+      pergunta: 'Eu pago alguma taxa para ter meu precatório avaliado?',
       resposta:
-        'Sim, quando feito com consultores sérios e contratos claros. Prezamos pela segurança jurídica e financeira em cada transação.',
-      show: 'false',
+        'Não! A avaliação, o cálculo do valor de mercado e a consultoria inicial são 100% gratuitas e sem compromisso. Você só decide negociar se a proposta atender às suas expectativas.',
     },
     {
-      pergunta: 'Quais documentos são necessários?',
+      pergunta: 'Quais documentos preciso ter em mãos para iniciar?',
       resposta:
-        'Identidade, CPF, comprovante de titularidade do precatório e documentos processuais. Ajudamos você em toda a coleta.',
-      show: 'false',
+        'RG ou CNH válidos, comprovante de endereço recente (últimos 90 dias), certidão de casamento atualizada (caso seja casado) e dados bancários. Você pode consultar nosso Checklist completo na seção de Documentos!',
     },
   ];
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-form-view',
@@ -10,36 +8,55 @@ import { environment } from 'src/environments/environment';
 })
 export class FormViewComponent implements OnInit {
   formulario!: FormGroup;
+  enviadoSucesso = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.formulario = this.fb.group({
-      nome: ['', Validators.required],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      telefone: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', [Validators.required, Validators.email]],
-      cpf: ['', [Validators.required, Validators.pattern(/^\d{11}$/)]],
-      telefone: ['', Validators.required],
+      cpf: ['', [Validators.required]],
+      tipoPrecatorio: ['Federal (TRF)', Validators.required],
+      detalhes: [''],
     });
   }
 
-  enviarFormulario() {
-    const formData = { ...this.formulario.value };
-    formData.cpf = formData.cpf.replace(/[.-]/g, ''); // Remove pontos e traços do CPF
-    formData.telefone = formData.telefone.replace(/[-()\s]/g, ''); // Remove traços, parênteses e espaços do telefone
-
-    if (this.formulario.valid) {
-      this.http.post(`${environment.apiUrl}/form`, formData).subscribe({
-        next: () => {
-          alert('Dados enviados com sucesso!');
-          this.formulario.reset();
-        },
-        error: (err) => {
-          alert('Erro ao enviar os dados.');
-          console.error(err);
-        },
-      });
-    } else {
-      alert('Preencha todos os campos corretamente.');
+  enviarFormulario(): void {
+    if (this.formulario.invalid) {
+      this.formulario.markAllAsTouched();
+      return;
     }
+
+    const { nome, telefone, email, cpf, tipoPrecatorio, detalhes } = this.formulario.value;
+
+    const mensagem =
+`⚖️ *CONSULTA DE PRECATÓRIO - WILLIANS INVEST*
+_Negócios em Precatórios_
+
+Olá! Preenchi o formulário no site e gostaria de uma avaliação gratuita do meu precatório:
+
+👤 *Nome:* ${nome}
+📱 *WhatsApp:* ${telefone}
+📧 *E-mail:* ${email}
+📄 *CPF:* ${cpf}
+🏛️ *Tipo de Precatório:* ${tipoPrecatorio}
+${detalhes ? `💬 *Informações do Processo / Valor:* ${detalhes}\n` : ''}
+Aguardando retorno dos especialistas para negociação. Obrigado!`;
+
+    const foneComercial = '5511989483916';
+    const whatsappUrl = `https://wa.me/${foneComercial}?text=${encodeURIComponent(mensagem)}`;
+
+    // Abre o WhatsApp comercial em nova aba
+    window.open(whatsappUrl, '_blank');
+
+    this.enviadoSucesso = true;
+    setTimeout(() => {
+      this.formulario.reset({
+        tipoPrecatorio: 'Federal (TRF)'
+      });
+      this.enviadoSucesso = false;
+    }, 6000);
   }
 }

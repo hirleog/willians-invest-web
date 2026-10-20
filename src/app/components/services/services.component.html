@@ -1,78 +1,66 @@
-<div class="container d-flex justify-content-center mb-5">
-  <img
-    src="../../../assets/logo-gpt.webp"
-    class="img-fluid"
-    style="width: 17em"
-    alt=""
-  />
-</div>
-
-<section id="services" class="container spacement">
-  <div data-aos="fade-down">
-    <div id="content-section" class="content container">
-      <div style="display: flex">
-        <p class="title-detail">Serviços</p>
-      </div>
-      <h2>Os Melhores Serviços</h2>
-      <p class="pb-3" style="font-size: larger">
-        Oferecemos serviços especializados com alto padrão de qualidade,
-        transparência e agilidade. Cada etapa é conduzida com o máximo cuidado
-        para garantir segurança jurídica e a melhor proposta pelo seu
-        precatório.
+<section id="services" class="services-section py-5">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="text-center mb-5" data-aos="fade-down" data-aos-duration="600">
+      <p class="title-detail justify-content-center">Soluções Estruturadas</p>
+      <h2 class="section-title">Nossos Serviços Especializados</h2>
+      <p class="section-description mx-auto">
+        Aliamos inteligência de mercado, sólida expertise jurídica e solidez financeira para transformar seus títulos judiciais em liquidez imediata com total transparência.
       </p>
-      <a
-        class="view-more-btn"
-        target="_blank"
-        href="https://wa.me/5511949054658?text=Olá, tudo bem? Gostaria de esclarecer algumas duvidas e saber mais sobre os serviços!"
-        >Fale Conosco</a
-      >
     </div>
-  </div>
 
-  <div
-    class="container mt-0 mt-sm-0 mt-md-5"
-    data-aos="zoom-in"
-    data-aos-duration="600"
-  >
-    <img
-      src="../../../assets/service-detail.webp"
-      class="img-fluid"
-      style="width: 100%"
-      alt=""
-    />
-  </div>
-</section>
-
-<div class="container mt-4">
-  <div class="row d-flex justify-content-center">
-    <div
-      *ngFor="let card of cards"
-      class="col-lg-4 col-md-6 col-sm-12 card-spacement"
-    >
+    <!-- Cards Grid -->
+    <div class="row g-4 justify-content-center mb-5">
       <div
-        class="about_practice_icontext floating-card"
-        (click)="wppMessageOptions(card.title)"
+        *ngFor="let card of cards"
+        class="col-lg-4 col-md-6 col-sm-12"
         data-aos="fade-up"
         data-aos-duration="600"
       >
-        <div class="about_practice_icon float-left">
-          <i
-            class="{{ card.image }}"
-            style="width: 60px; margin: 0px 5px 0px 5px"
-          ></i>
-        </div>
+        <div class="service-card h-100" (click)="wppMessageOptions(card.title)">
+          <div class="service-header d-flex justify-content-between align-items-start mb-3">
+            <div class="service-icon-box">
+              <i [class]="card.icon"></i>
+            </div>
+            <span class="service-tag">{{ card.tag }}</span>
+          </div>
 
-        <div>
-          <h4 style="padding-bottom: 0px">{{ card.title }}</h4>
-          <p>{{ card.description }}</p>
-          <a
-            class="view-more-btn"
-            (click)="wppMessageOptions(card.title)"
-            href=""
-            >Consultar</a
-          >
+          <h3 class="service-card-title">{{ card.title }}</h3>
+          <p class="service-card-desc">{{ card.description }}</p>
+
+          <div class="service-footer mt-auto pt-3">
+            <span class="service-cta">
+              Consultar este serviço <i class="fa-solid fa-arrow-right ms-1"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process / Como Funciona -->
+    <div class="how-it-works-box mt-5 p-4 p-md-5" data-aos="fade-up" data-aos-duration="700">
+      <div class="row align-items-center mb-4">
+        <div class="col-lg-7">
+          <p class="title-detail">Processo Transparente</p>
+          <h2 class="mb-2">Como Funciona a Negociação</h2>
+          <p class="text-muted">Da primeira consulta ao dinheiro na conta em 4 etapas seguras e objetivas.</p>
+        </div>
+        <div class="col-lg-5 text-lg-end">
+          <a href="#form" class="btn btn-gold">
+            <i class="fa-solid fa-file-invoice me-1"></i> Iniciar Avaliação
+          </a>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <div *ngFor="let step of steps" class="col-lg-3 col-md-6 col-sm-12">
+          <div class="step-card h-100">
+            <div class="step-number">{{ step.number }}</div>
+            <h4 class="step-title">{{ step.title }}</h4>
+            <p class="step-desc">{{ step.description }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>

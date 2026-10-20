@@ -1,122 +1,202 @@
-<section id="form">
-  <div class="d-md-flex container my-5">
-    <div class="left-content col-md-7">
-      <div
-        id="content-section"
-        class="content container"
-        data-aos="fade-down"
-        data-aos-duration="900"
-      >
-        <div style="display: flex">
-          <p class="title-detail">Consulte Agora</p>
-        </div>
-        <div class="row">
-          <!-- <h2 class="col-12">Por que você precisa dos melhores advogados.</h2> -->
-          <h2 class="col-12">Consulte grátis seu precátorio</h2>
-        </div>
-        <div class="hero-btn mb-3 mt-3">
-          <a class="view-more-btn mb-3"></a>
-        </div>
-        <p class="pb-3" style="font-size: larger; font-weight: bold">
-          Preencha o formulario para falar com nossos especialistas e descobrir
-          o valor do seu precatório. Nossa equipe está pronta para ajudar você a
-          entender o processo e
-          <span class="highlight">maximizar</span> o valor do seu precatório.
+<section id="form" class="form-section py-5">
+  <div class="container my-4">
+    <div class="row g-5 align-items-center">
+      <!-- Left Column: Trust & Value Proposition -->
+      <div class="col-lg-6" data-aos="fade-right" data-aos-duration="700">
+        <p class="title-detail">Avaliação Gratuita</p>
+        <h2 class="form-title mb-4">
+          Descubra o Valor do Seu <span class="highlight">Precatório</span> em Minutos
+        </h2>
+        <p class="form-intro mb-4">
+          Preencha o formulário para falar diretamente com nossos especialistas. Ao enviar, seus dados serão organizados e enviados para o nosso WhatsApp comercial para um atendimento imediato, ágil e personalizado.
         </p>
+
+        <!-- Trust Checkpoints -->
+        <div class="trust-checks mb-4">
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <div>
+              <strong>Avaliação 100% Sem Custo</strong>
+              <p class="mb-0">Não cobramos nenhuma taxa para avaliar o seu título judicial.</p>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <div>
+              <strong>Segurança Jurídica & Transparência</strong>
+              <p class="mb-0">Contratos formalizados e cessão com validade jurídica perante o Tribunal.</p>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <div>
+              <strong>Pagamento Direto à Vista</strong>
+              <p class="mb-0">Receba via transferência bancária direta (TED ou PIX) sem intermediários.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Contact Card -->
+        <div class="quick-contact-box p-3">
+          <div class="d-flex align-items-center gap-3">
+            <div class="wpp-circle">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div>
+              <span class="text-muted d-block" style="font-size: 13px;">Canal Comercial Direto:</span>
+              <a href="https://wa.me/5511989483916" target="_blank" class="wpp-phone-link">
+                (11) 98948-3916
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="container col-md-5" data-aos="fade-right" data-aos-duration="600" style="background-color: var(--secondary); padding: 2em;">
-      <div class="container ">
-        <!-- <h2 class="mb-4">Formulário de Cadastro</h2> -->
-        <form
-          [formGroup]="formulario"
-          (ngSubmit)="enviarFormulario()"
-          novalidate
-        >
-          <div class="mb-3">
-            <label for="nome" class="form-label"
-              >Nome <span class="text-danger">*</span></label
-            >
-            <input
-              id="nome"
-              type="text"
-              class="form-control"
-              formControlName="nome"
-              [ngClass]="{
-                'is-invalid':
-                  formulario.get('nome')?.invalid &&
-                  formulario.get('nome')?.touched
-              }"
-            />
-            <div class="invalid-feedback">Nome é obrigatório.</div>
+      <!-- Right Column: Lead Form -->
+      <div class="col-lg-6" data-aos="fade-left" data-aos-duration="700">
+        <div class="form-card p-4 p-md-5">
+          <div class="form-card-header mb-4 text-center">
+            <h3 class="card-headline mb-1">Formulário de Consulta</h3>
+            <p class="text-muted mb-0" style="font-size: 14px;">
+              Preencha os campos para iniciar seu atendimento no WhatsApp
+            </p>
           </div>
 
-          <div class="mb-3">
-            <label for="email" class="form-label"
-              >Email <span class="text-danger">*</span></label
-            >
-            <input
-              id="email"
-              type="email"
-              class="form-control"
-              formControlName="email"
-              [ngClass]="{
-                'is-invalid':
-                  formulario.get('email')?.invalid &&
-                  formulario.get('email')?.touched
-              }"
-            />
-            <div class="invalid-feedback">Informe um email válido.</div>
+          <!-- Success Alert -->
+          <div *ngIf="enviadoSucesso" class="alert alert-success d-flex align-items-center gap-2 mb-4" role="alert">
+            <i class="fa-solid fa-circle-check fs-5"></i>
+            <div>
+              <strong>Pronto!</strong> Sua solicitação foi preparada e direcionada para o WhatsApp comercial.
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label for="cpf" class="form-label"
-              >CPF <span class="text-danger">*</span></label
+          <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()" novalidate>
+            <!-- Nome -->
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome Completo <span class="required-star">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                <input
+                  id="nome"
+                  type="text"
+                  class="form-control"
+                  placeholder="Seu nome completo"
+                  formControlName="nome"
+                  [ngClass]="{
+                    'is-invalid': formulario.get('nome')?.invalid && formulario.get('nome')?.touched
+                  }"
+                />
+              </div>
+              <div class="invalid-feedback d-block" *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched">
+                Por favor, informe seu nome completo.
+              </div>
+            </div>
+
+            <!-- WhatsApp & Telefone -->
+            <div class="mb-3">
+              <label for="telefone" class="form-label">WhatsApp com DDD <span class="required-star">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-brands fa-whatsapp"></i></span>
+                <input
+                  id="telefone"
+                  type="tel"
+                  class="form-control"
+                  placeholder="(11) 99999-9999"
+                  formControlName="telefone"
+                  [ngClass]="{
+                    'is-invalid': formulario.get('telefone')?.invalid && formulario.get('telefone')?.touched
+                  }"
+                />
+              </div>
+              <div class="invalid-feedback d-block" *ngIf="formulario.get('telefone')?.invalid && formulario.get('telefone')?.touched">
+                Informe um número de WhatsApp válido com DDD.
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">E-mail <span class="required-star">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                <input
+                  id="email"
+                  type="email"
+                  class="form-control"
+                  placeholder="seuemail@exemplo.com"
+                  formControlName="email"
+                  [ngClass]="{
+                    'is-invalid': formulario.get('email')?.invalid && formulario.get('email')?.touched
+                  }"
+                />
+              </div>
+              <div class="invalid-feedback d-block" *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched">
+                Informe um e-mail válido para contato.
+              </div>
+            </div>
+
+            <!-- CPF -->
+            <div class="mb-3">
+              <label for="cpf" class="form-label">CPF do Titular <span class="required-star">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-regular fa-id-card"></i></span>
+                <input
+                  id="cpf"
+                  type="text"
+                  class="form-control"
+                  placeholder="000.000.000-00"
+                  formControlName="cpf"
+                  [ngClass]="{
+                    'is-invalid': formulario.get('cpf')?.invalid && formulario.get('cpf')?.touched
+                  }"
+                />
+              </div>
+              <small class="form-hint">Necessário para conferência do processo perante o Tribunal.</small>
+              <div class="invalid-feedback d-block" *ngIf="formulario.get('cpf')?.invalid && formulario.get('cpf')?.touched">
+                CPF é obrigatório para localização do título.
+              </div>
+            </div>
+
+            <!-- Tipo de Precatório -->
+            <div class="mb-3">
+              <label for="tipoPrecatorio" class="form-label">Esfera do Precatório</label>
+              <select id="tipoPrecatorio" class="form-select" formControlName="tipoPrecatorio">
+                <option value="Federal (TRF)">Federal (TRF / União / INSS)</option>
+                <option value="Estadual">Estadual (Governo do Estado)</option>
+                <option value="Municipal">Municipal (Prefeitura)</option>
+                <option value="Não sei informar">Não tenho certeza / A consultar</option>
+              </select>
+            </div>
+
+            <!-- Detalhes / Observações (Opcional) -->
+            <div class="mb-4">
+              <label for="detalhes" class="form-label">Valor Estimado ou Nº do Processo (Opcional)</label>
+              <textarea
+                id="detalhes"
+                class="form-control"
+                rows="2"
+                placeholder="Ex: R$ 50.000 ou número do processo judicial"
+                formControlName="detalhes"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button (Direct to WhatsApp) -->
+            <button
+              type="submit"
+              class="btn btn-whatsapp-cta w-100 py-3 d-flex align-items-center justify-content-center gap-2"
             >
-            <input
-              id="cpf"
-              type="text"
-              class="form-control"
-              formControlName="cpf"
-              [ngClass]="{
-                'is-invalid':
-                  formulario.get('cpf')?.invalid &&
-                  formulario.get('cpf')?.touched
-              }"
-            />
-            <div class="invalid-feedback">Informe um CPF com 11 dígitos.</div>
-            <small class="form-text text-muted">Somente Dígitos</small>
+              <i class="fa-brands fa-whatsapp fs-5"></i>
+              <span>SOLICITAR CONSULTA NO WHATSAPP</span>
+            </button>
 
-          </div>
-
-          <div class="mb-3">
-            <label for="telefone" class="form-label"
-              >WhatsApp <span class="text-danger">*</span></label
-            >
-            <input
-              id="telefone"
-              type="text"
-              class="form-control"
-              formControlName="telefone"
-              [ngClass]="{
-                'is-invalid':
-                  formulario.get('telefone')?.invalid &&
-                  formulario.get('telefone')?.touched
-              }"
-            />
-            <div class="invalid-feedback">Telefone é obrigatório.</div>
-            <small class="form-text text-muted">DDD + Número</small>
-          </div>
-
-          <button
-            type="submit"
-            class="btn btn-primary btn-lg ui-button mr-5"
-            style="color: var(--secondary-detail)"
-          >
-            Enviar
-          </button>
-        </form>
+            <div class="text-center mt-3">
+              <small class="text-muted d-flex align-items-center justify-content-center gap-1" style="font-size: 12px;">
+                <i class="fa-solid fa-lock"></i> Seus dados estão seguros e protegidos pela LGPD.
+              </small>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

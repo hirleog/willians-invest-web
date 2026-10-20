@@ -1,0 +1,55 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 210" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E6C8" />
+      <stop offset="35%" stop-color="#DFBA73" />
+      <stop offset="65%" stop-color="#C5A880" />
+      <stop offset="100%" stop-color="#9A7B4F" />
+    </linearGradient>
+    <linearGradient id="goldLineL" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C5A880" stop-opacity="0" />
+      <stop offset="100%" stop-color="#DFBA73" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="goldLineR" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DFBA73" stop-opacity="1" />
+      <stop offset="100%" stop-color="#C5A880" stop-opacity="0" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Monogram W -->
+  <g transform="translate(250, 48)" filter="url(#subtleGlow)">
+    <!-- Left V / Stroke with serif -->
+    <path d="M -54 -38 L -30 -38 L -30 -34 L -38 -34 L -15 28 L -7 28 L 7 -22 L 0 -22 L 0 -26 L 16 -26 L 16 -22 L 9 -22 L -12 36 L -20 36 L -46 -34 L -54 -34 Z" fill="url(#goldSheen)" />
+    <!-- Right V / Interlocking stroke with serif -->
+    <path d="M -26 -26 L 24 -26 L 24 -22 L 14 -22 L 28 20 L 52 -34 L 44 -34 L 44 -38 L 70 -38 L 70 -34 L 60 -34 L 32 38 L 24 38 L 6 -16 L -16 -16 L -16 -22 L -26 -22 Z" fill="url(#goldSheen)" />
+  </g>
+
+  <!-- Typography: WILLIANS INVEST -->
+  <text x="250" y="142" 
+        text-anchor="middle" 
+        fill="url(#goldSheen)" 
+        font-family="'Playfair Display', 'Cinzel', 'Cinzel Decorative', 'Georgia', serif" 
+        font-size="33" 
+        font-weight="700" 
+        letter-spacing="4.5">
+    WILLIANS INVEST
+  </text>
+
+  <!-- Tagline: NEGÓCIOS EM PRECATÓRIOS -->
+  <g transform="translate(250, 172)">
+    <line x1="-205" y1="-5" x2="-118" y2="-5" stroke="url(#goldLineL)" stroke-width="1.3" />
+    <text x="0" y="0" 
+          text-anchor="middle" 
+          fill="#DFBA73" 
+          font-family="'Montserrat', 'Inter', sans-serif" 
+          font-size="12" 
+          font-weight="600" 
+          letter-spacing="3.8">
+      NEGÓCIOS EM PRECATÓRIOS
+    </text>
+    <line x1="118" y1="-5" x2="205" y2="-5" stroke="url(#goldLineR)" stroke-width="1.3" />
+  </g>
+</svg>
