@@ -16,99 +16,119 @@
   line-height: 1.7;
 }
 
-.stat-card {
-  background: #131722;
-  border: 1px solid rgba(197, 168, 128, 0.25);
+/* Grid de Pilares Institucionais */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.pillar-card {
+  background: #12151e;
+  border: 1px solid rgba(197, 168, 128, 0.22);
   border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  border-color: var(--primary-light);
-  transform: translateY(-3px);
-  background: #171c2b;
-}
-
-.stat-number {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--primary-light);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.stat-label {
-  color: #94a3b8;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-/* Visual elements */
-.about-visual {
+  transition: all 0.35s ease;
   position: relative;
 }
 
-.profile-card-main {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(197, 168, 128, 0.3);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-}
-
-.profile-photo {
-  max-height: 480px;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-}
-
-.profile-badge-overlay {
+.pillar-card::before {
+  content: "";
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(11, 13, 18, 0.95) 0%, rgba(11, 13, 18, 0.7) 60%, transparent 100%);
+  height: 2px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px 12px 0 0;
 }
 
-.text-gold-sub {
-  color: var(--primary-light);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+.pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-light);
+  background: #171c2b;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(197, 168, 128, 0.1);
 }
 
-.floating-trust-badge {
-  position: absolute;
-  bottom: -20px;
-  right: -15px;
-  background: #161a25;
-  border: 1px solid var(--primary-light);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  z-index: 3;
+.pillar-card:hover::before {
+  opacity: 1;
 }
 
-.trust-badge-icon {
-  width: 42px;
-  height: 42px;
-  background: rgba(197, 168, 128, 0.15);
+.pillar-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(197, 168, 128, 0.12);
+  border: 1px solid rgba(197, 168, 128, 0.3);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-light);
   font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon {
+  background: var(--primary-gradient);
+  color: #0b0d12;
+  transform: scale(1.05);
+}
+
+.pillar-title {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pillar-desc {
+  color: #94a3b8;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* Barra de Métricas */
+.stats-strip {
+  background: #12151e;
+  border: 1px solid rgba(197, 168, 128, 0.25);
+}
+
+.stat-mini {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-family: var(--font-serif);
+  color: var(--primary-light);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.stat-desc {
+  color: #94a3b8;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(197, 168, 128, 0.2);
+  align-self: center;
 }
 
 @media (max-width: 991px) {
   .about-title {
     font-size: 30px;
   }
-  .floating-trust-badge {
-    position: static;
-    margin-top: 15px;
+}
+
+@media (max-width: 576px) {
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
