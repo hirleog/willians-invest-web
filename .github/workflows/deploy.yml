@@ -2,9 +2,9 @@ name: Deploy Automático
 
 on:
   push:
-    branches: ["master"] # Alterado para 'main' (ou mantenha 'master' se for seu caso)
+    branches: ["master"]
     paths:
-      - "**" # Monitora todas as alterações no repositório
+      - "**"
 
 jobs:
   deploy:
@@ -16,6 +16,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install --force
@@ -26,16 +27,15 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          echo "${{ secrets.SSH_PRIVATE_KEY || secrets.TUDU_PROFESSIONAL_SSH_KEY || secrets.TUDU_SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+          echo -e "Host 89.116.73.70\n  HostKeyAlgorithms ssh-ed25519,rsa-sha2-512\n  KexAlgorithms curve25519-sha256\n  Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com" >> ~/.ssh/config
+          ssh-keyscan -t ed25519,rsa-sha2-512 89.116.73.70 >> ~/.ssh/known_hosts
 
       - name: Enviar arquivos via SCP
         run: |
-          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r dist/willians-invest/* ${{ secrets.DEPLOY_USER }}@${{ secrets.SERVER_IP }}:/var/www/projects/frontend/willians-invest/
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -r dist/willians-invest/* deployer@89.116.73.70:/var/www/projects/frontend/willians-invest-web/dist/willians-invest/
 
-      - name: Fix permissions
+      - name: Fix permissions e reload Nginx
         run: |
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.SERVER_IP }} "sudo chown -R www-data:www-data /var/www/projects/frontend/willians-invest"
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.SERVER_IP }} "sudo systemctl restart nginx"
-
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no deployer@89.116.73.70 "sudo chown -R www-data:www-data /var/www/projects/frontend/willians-invest-web/dist/willians-invest && sudo chmod -R 775 /var/www/projects/frontend/willians-invest-web/dist/willians-invest && sudo systemctl reload nginx"
