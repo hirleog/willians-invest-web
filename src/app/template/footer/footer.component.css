@@ -43,6 +43,13 @@
   letter-spacing: 0.5px;
 }
 
+.footer-label-highlight {
+  color: var(--primary-light);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 .footer-nav-list li {
   margin-bottom: 8px;
 }

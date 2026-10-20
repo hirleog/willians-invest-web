@@ -147,6 +147,14 @@
   letter-spacing: 0.5px;
 }
 
+.checklist-banner-sub {
+  color: var(--primary-light);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
 @media (max-width: 767px) {
   .checklist-main-title {
     font-size: 26px;

@@ -10,7 +10,7 @@ export class QuestionsComponent implements OnInit {
     {
       pergunta: 'O que é a antecipação ou cessão de precatórios?',
       resposta:
-        'É um procedimento legal previsto no art. 100, § 13 da Constituição Federal que permite ao titular transferir seu direito creditório para terceiros em troca do recebimento do valor acordado à vista, sem a necessidade de esperar anos na fila dos tribunais.',
+        'A antecipação de precatórios é um direito assegurado pela Constituição Federal que permite ao credor transferir seu título judicial a investidores e receber o valor à vista em sua conta bancária, evitando as longas filas e a demora do setor público.',
     },
     {
       pergunta: 'É seguro e legal vender o meu precatório?',
