@@ -2,28 +2,31 @@
 
 <div *ngIf="isDashboard === false">
   <app-hero></app-hero>
-
   <app-services></app-services>
   <app-form-view></app-form-view>
+  <app-checklist></app-checklist>
   <app-mid-banner></app-mid-banner>
   <app-about></app-about>
-
-  <!-- <app-client-reviews></app-client-reviews> -->
-
   <app-questions></app-questions>
 
-  <a href="#home" class="btn-topo"> &#x2191; </a>
+  <!-- Botão Voltar ao Topo -->
+  <a href="#home" class="btn-topo" aria-label="Voltar ao início">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
+  <!-- Botão Flutuante WhatsApp Oficial Comercial -->
   <a
-    href="https://wa.me/5511989483916?text=Olá, tudo bem? Gostaria de esclarecer algumas duvidas e saber mais sobre os serviços!"
+    href="https://wa.me/5511989483916?text=Olá,%20tudo%20bem?%20Gostaria%20de%20consultar%20meu%20precatório%20com%20a%20Willians%20Invest."
     class="btn-whatsapp"
     target="_blank"
-    style="position: fixed; right: 15px; bottom: 15px; z-index: 10"
+    style="position: fixed; right: 20px; bottom: 20px; z-index: 999;"
+    aria-label="Fale no WhatsApp Comercial"
   >
-    <img src="../assets/whatsapp-button.webp" alt="botão whatsapp" />
+    <i class="fa-brands fa-whatsapp fs-2 text-white"></i>
   </a>
 </div>
 
-<!-- // logica para apresentar o Dashboard -->
+<!-- Lógica para apresentar o Dashboard -->
 <app-dashboard *ngIf="isDashboard === true"></app-dashboard>
 
 <app-footer></app-footer>

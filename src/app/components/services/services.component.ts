@@ -6,62 +6,75 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services.component.css'],
 })
 export class ServicesComponent implements OnInit {
-  public cards: Array<any> = [];
-  constructor() {
-    this.cards = [
-      {
-        image: 'fa-solid fa-money-bill-wave',
-        title: 'Compra de Precatório',
-        description: 'Pagamos à vista com segurança e agilidade.',
-      },
-      {
-        image: 'fa-solid fa-file-lines',
-        title: 'Análise Gratuita',
-        description: 'Avaliamos seu precatório sem compromisso.',
-      },
+  public cards: Array<any> = [
+    {
+      icon: 'fa-solid fa-money-bill-transfer',
+      title: 'Compra e Antecipação',
+      tag: 'Mais Procurado',
+      description: 'Receba o valor do seu precatório à vista via TED ou PIX, sem esperar anos pela fila de pagamento do governo.',
+    },
+    {
+      icon: 'fa-solid fa-file-shield',
+      title: 'Avaliação Jurídica Grátis',
+      tag: 'Zero Custo',
+      description: 'Nossa equipe jurídica analisa seu processo, calcula o valor real de mercado e apresenta proposta sem compromisso.',
+    },
+    {
+      icon: 'fa-solid fa-landmark',
+      title: 'Precatórios Federais (TRF)',
+      tag: 'Alta Liquidez',
+      description: 'Condições exclusivas para títulos federais de todos os Tribunais Regionais Federais (TRF1 a TRF6).',
+    },
+    {
+      icon: 'fa-solid fa-city',
+      title: 'Estaduais e Municipais',
+      tag: 'Todo o Brasil',
+      description: 'Estruturação especializada para precatórios contra Governos Estaduais e Prefeituras em todo o território nacional.',
+    },
+    {
+      icon: 'fa-solid fa-folder-closed',
+      title: 'Suporte Documental Total',
+      tag: 'Sem Burocracia',
+      description: 'Auxiliamos na obtenção de certidões, certidão de casamento e documentação processual necessária.',
+    },
+    {
+      icon: 'fa-solid fa-handshake-angle',
+      title: 'Cessão 100% Homologada',
+      tag: 'Segurança Máxima',
+      description: 'Contrato de cessão de crédito registrado em cartório público e protocolado nos autos judiciais.',
+    },
+  ];
 
-      {
-        image: 'fa-solid fa-user-tie',
-        title: 'Consultoria Legal',
-        description: 'Esclareça dúvidas com quem entende do assunto.',
-      },
-      {
-        image: 'fa-solid fa-folder-open',
-        title: 'Documentação',
-        description: 'Auxiliamos na parte burocrática e jurídica.',
-      },
-      {
-        image: 'fa-solid fa-lock',
-        title: 'Venda Segura',
-        description: 'Processo transparente e contrato formalizado.',
-      },
-    ];
-  }
+  public steps = [
+    {
+      number: '01',
+      title: 'Consulta Rápida',
+      description: 'Preencha o formulário ou envie uma mensagem no WhatsApp com as informações básicas do seu precatório.',
+    },
+    {
+      number: '02',
+      title: 'Auditoria Gratuita',
+      description: 'Nossos consultores jurídicos analisam a regularidade do processo e apuram o valor presente com agilidade.',
+    },
+    {
+      number: '03',
+      title: 'Proposta Transparente',
+      description: 'Você recebe uma proposta clara, justa e sem pegadinhas ou custos ocultos para sua tomada de decisão.',
+    },
+    {
+      number: '04',
+      title: 'Pagamento à Vista',
+      description: 'Após a formalização e registro da cessão, o valor é creditado imediatamente na sua conta bancária.',
+    },
+  ];
+
+  constructor() {}
 
   ngOnInit(): void {}
 
-  public goToServices(): void {}
-
   public wppMessageOptions(option: string): void {
-    const phoneNumber: string = '5511989483916';
-
-    const messages: { [key: string]: string } = {
-      'Compra de Precatório':
-        'Olá! Tenho interesse em vender meu precatório. Pode me explicar como funciona o processo de compra?',
-      'Análise Gratuita':
-        'Olá! Gostaria de solicitar uma análise gratuita do meu precatório.',
-      'Consultoria Legal':
-        'Olá! Preciso de uma consultoria sobre meu precatório. Pode me ajudar?',
-      Documentação:
-        'Olá! Tenho dúvidas sobre a documentação necessária para vender meu precatório.',
-      'Venda Segura':
-        'Olá! Gostaria de entender como funciona a venda segura de um precatório.',
-    };
-
-    const message =
-      messages[option] ||
-      'Olá! Gostaria de mais informações sobre os serviços de precatórios.';
-
+    const phoneNumber = '5511989483916';
+    const message = `Olá, Willians Invest! Gostaria de mais informações sobre o serviço de *${option}*.`;
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
       '_blank'

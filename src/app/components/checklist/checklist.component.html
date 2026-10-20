@@ -1,0 +1,75 @@
+<section id="checklist" class="checklist-section py-5">
+  <div class="container my-4">
+    <!-- Section Wrapper styled with high institutional elegance -->
+    <div class="checklist-wrapper p-4 p-md-5" data-aos="fade-up" data-aos-duration="700">
+      
+      <!-- Card Header Banner matching client graphic -->
+      <div class="checklist-header text-center mb-5 pb-4 border-bottom-gold">
+        <div class="d-inline-flex align-items-center justify-content-center checklist-icon-badge mb-3">
+          <i class="fa-solid fa-clipboard-check"></i>
+        </div>
+        <p class="title-detail justify-content-center mb-1">Guia do Beneficiário</p>
+        <h2 class="checklist-main-title">
+          CHECK LIST <span class="highlight">DOCUMENTOS</span>
+        </h2>
+        <h4 class="checklist-sub-title">Documentos para Negociação de Precatório</h4>
+        <div class="slogan-badge mt-2">
+          <span>SEU DIREITO, NOSSO COMPROMISSO</span>
+        </div>
+      </div>
+
+      <!-- Checklist Items Grid -->
+      <div class="row g-4">
+        <div
+          *ngFor="let item of checklistItems; let idx = index"
+          class="col-lg-6 col-md-12"
+          data-aos="fade-up"
+          [attr.data-aos-delay]="idx * 80"
+        >
+          <div class="checklist-card h-100 d-flex align-items-start gap-3 p-3 p-md-4">
+            <!-- Checkbox Indicator -->
+            <div class="checkbox-indicator">
+              <i class="fa-regular fa-square-check"></i>
+            </div>
+
+            <!-- Icon Circle -->
+            <div class="item-icon-circle">
+              <i [class]="item.icon"></i>
+            </div>
+
+            <!-- Item Text -->
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <h4 class="item-title mb-0">{{ item.title }}</h4>
+                <span class="item-tag">{{ item.tag }}</span>
+              </div>
+              <p class="item-desc mb-0">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Banner (Exact match to graphic) -->
+      <div class="checklist-bottom-banner mt-5 p-4 rounded-3 d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
+        <div class="d-flex align-items-center gap-3">
+          <div class="document-badge-icon">
+            <i class="fa-solid fa-file-contract"></i>
+          </div>
+          <div>
+            <h4 class="cursive-callout mb-1">
+              Organize seus documentos e agilize sua negociação!
+            </h4>
+            <p class="text-muted mb-0" style="font-size: 14px;">
+              Envie fotos ou PDFs legíveis direto no WhatsApp dos nossos consultores.
+            </p>
+          </div>
+        </div>
+
+        <button (click)="enviarDocumentosWhatsapp()" class="btn btn-whatsapp-cta btn-lg px-4 flex-shrink-0">
+          <i class="fa-brands fa-whatsapp me-2"></i> Enviar Documentos no WhatsApp
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>

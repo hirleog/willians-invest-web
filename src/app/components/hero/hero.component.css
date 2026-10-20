@@ -1,171 +1,152 @@
-#banner-text h1 {
-  /* margin-top: 1em; */
-  color: var(--secondary);
+.hero-section {
   position: relative;
-  font-weight: 600;
-  font-size: 60px;
-  /* color: #222222; */
-  line-height: 1.2em;
-  font-family: "Poppins", sans-serif;
-  margin: 0 0 7px;
-}
-.title-top {
-  transition: none;
-  line-height: 36px;
-  border-width: 0px;
-  margin: 0px 0px 10px;
-  padding: 0px;
-  letter-spacing: 0px;
-  font-weight: 500;
-  font-size: 36px !important;
-}
-
-p {
-  color: var(--secondary-detail);
-
-  transition: none;
-  line-height: 32px;
-  border-width: 0px;
-  margin: 0px;
-  padding: 0px;
-  letter-spacing: 0px;
-  font-weight: 400;
-  font-size: 22px !important;
-}
-
-.hero-content {
-  text-align: center;
-  color: #ffffff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-}
-
-/* Define o estilo para o vídeo */
-.video-background video {
-  /* background-color: red;
-  position: absolute; */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Faz com que o vídeo preencha o container sem distorção */
-  z-index: -1;
-  /* Coloca o vídeo atrás do conteúdo */
-  position: absolute;
-}
-
-.video-background img {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Faz com que o vídeo preencha o container sem distorção */
-  z-index: -1;
-  /* Coloca o vídeo atrás do conteúdo */
-  position: absolute;
-  /* filter: blur(2px); */
-}
-
-/* Estilo da seção de vídeo */
-.video-background {
-  position: sticky;
-  height: 111vh;
-  margin-top: -1em;
-  /* opacity: 0; */
-  transition: opacity 2s ease;
+  min-height: 92vh;
   display: flex;
-  justify-content: start;
   align-items: center;
+  padding: 130px 0 80px;
+  background-color: #0b0d12;
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(197, 168, 128, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(10, 78, 55, 0.15) 0%, transparent 45%),
+    linear-gradient(to bottom, rgba(11, 13, 18, 0.6), rgba(11, 13, 18, 0.95)),
+    url('../../../assets/ng-home-upscale.webp');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
-.video-background::before {
-  content: "";
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.137);
-  z-index: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(11, 13, 18, 0.88) 0%, rgba(11, 13, 18, 0.75) 50%, rgba(11, 13, 18, 0.92) 100%);
+  pointer-events: none;
 }
 
-.bg-overlay-dark::before {
-  background-color: rgb(40, 44, 47);
+.hero-container {
+  z-index: 2;
 }
 
-.bg-overlay-dark:before {
-  background-color: #333333;
-  opacity: 0.7;
+.hero-tagline {
+  background: rgba(197, 168, 128, 0.1);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  padding: 6px 16px;
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
 }
 
-/* Conteúdo sobre o vídeo */
-.content {
-  position: relative;
-  color: var(--light);
-  text-align: center;
-  color: wheat;
-  text-align: start;
-
-  opacity: 0;
-  transition: opacity 2s ease;
+.gold-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  margin-right: 10px;
+  box-shadow: 0 0 8px var(--primary-light);
 }
 
-.fade-in {
-  opacity: 1;
+.tagline-text {
+  font-family: var(--font-sans);
+  color: var(--primary-light);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
-.carousel-inner {
-  transition: transform 0.4s ease-in-out;
-  /* Transição suave entre os slides */
+.hero-title {
+  color: #ffffff;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.18;
 }
 
-.carousel-item {
-  transition: transform 0.4s ease-in-out;
-  /* Suaviza o movimento do slide */
+.hero-subtitle {
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 650px;
 }
 
-.carousel-item img {
-  width: 100%;
-  /* Ajusta as imagens para ocupar todo o slide */
-  /* height: auto; */
-  object-fit: cover;
-  /* Garante que as imagens preencham o espaço corretamente */
+.hero-cta {
+  padding: 16px 36px;
+  font-size: 16px;
 }
 
-.description {
-  font-size: larger;
-  color: var(--primary);
-  text-align: justify;
-  text-justify: inter-word;
+.hero-wpp-btn {
+  padding: 16px 32px;
+  font-size: 16px;
 }
 
-@media (max-width: 768px) {
-  /* .video-background {
-    height: auto !important;
-    margin-top: 141px !important;
-  } */
-  /* .video-background img {
-    display: none;
-  } */
-  #banner-text h1 {
-    font-size: 48px;
-    /* color: var(--secondary-dark); */
+/* Badges Grid */
+.hero-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: rgba(197, 168, 128, 0.12);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-light);
+  font-size: 18px;
+}
+
+.badge-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-info strong {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.badge-info span {
+  color: #94a3b8;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+@media (max-width: 991px) {
+  .hero-title {
+    font-size: 40px;
   }
-  
-  .description {
-    color: var(--secondary) !important;
-  }
-  .title-detail {
-    color: var(--primary) !important;
+  .hero-badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
-/* 
-@media (max-width: 998px) {
-  #banner-text h1 {
-    margin-top: 4em;
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 110px 0 60px;
   }
-} */
+  .hero-title {
+    font-size: 30px;
+  }
+  .hero-subtitle {
+    font-size: 15px;
+  }
+  .hero-badges-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}

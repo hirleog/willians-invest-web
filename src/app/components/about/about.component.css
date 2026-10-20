@@ -1,223 +1,114 @@
-#about {
-  padding-top: 2em;
-  padding-bottom: 2em;
-  /* background-color: var(--secondary-dark); */
-}
-
-.about-content {
-  display: flex;
-}
-
-.cards {
-  display: flex;
-}
-
-
-.icon-circle {
-  width: 50px;
-  height: 50px;
-  background-color: var(--primary);
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-}
-
-.card-ajust {
-  display: flex;
-  justify-content: center;
-}
-
-.content {
-  width: 100%;
-}
-
-.custom-circle {
-  border: 2px solid #000;
-  /* Cor do círculo */
-  border-radius: 50%;
-  /* Torna o contorno arredondado */
-  padding: 10px;
-  /* Ajusta o tamanho do círculo */
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 37px;
-  /* Ajusta o tamanho do ícone */
-  color: #000;
-  /* Cor do ícone */
-}
-
-.ajust-margin {
-  margin-top: 2em;
-}
-
-.d-flex p {
-  margin: 14px 0px 0px 10px;
-}
-
-.d-flex i {
-  /* width: 60px; */
-  color: var(--primary);
-}
-
-
-/* ESTILOS DOS CARDS */
-
-#about-img {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* 3 colunas de tamanhos iguais */
-  gap: 15px;
-  /* Espaçamento entre os elementos */
-}
-
-.service-text {
-  bottom: 50px;
-  z-index: 2;
-  left: 50px;
-  width: 275px;
-  position: absolute;
-}
-
-h4 {
-  color: var(--secondary-detail);
-  font-size: 32px;
-}
-
-h5 {
-  color: var(--secondary-detail);
-  font-size: 25px;
-  /* width: 102%; */
-}
-
-.about_service_box {
+.about-section {
+  background-color: #0b0d12;
+  position: relative;
   overflow: hidden;
 }
 
-.about_service_box::before {
-  background-image: linear-gradient(rgba(41, 45, 47, 0), rgba(41, 45, 47, 0.9));
+.about-title {
+  color: #ffffff;
+  font-size: 38px;
+  line-height: 1.25;
 }
 
-.about_service_box {
-  position: sticky;
-  /* width: 370px;
-  height: 400px; */
+.about-lead {
+  color: #e2e8f0;
+  font-size: 16.5px;
+  line-height: 1.7;
 }
 
-.about_service_box::before {
+.stat-card {
+  background: #131722;
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-3px);
+  background: #171c2b;
+}
+
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Visual elements */
+.about-visual {
+  position: relative;
+}
+
+.profile-card-main {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.profile-photo {
+  max-height: 480px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.profile-badge-overlay {
   position: absolute;
-  top: 0;
-  /* left: 15px;
-  width: 93.1%; */
-  left: 0;
-  width: 100%;
-  opacity: 1;
-  content: "";
-  z-index: 1;
-  height: 100%;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  -o-transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(52, 52, 52, 0)), to(rgba(52, 52, 52, 0.90196)));
-  background-image: -o-linear-gradient(top, rgba(52, 52, 52, 0), rgba(52, 52, 52, 0.90196));
-  background-image: linear-gradient(to bottom, rgba(52, 52, 52, 0), rgba(52, 52, 52, 0.90196));
-}
-
-.about_service_box .overlay {
-  position: absolute;
-  bottom: -100%;
-  /* começa fora da imagem */
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, var(--primary-transparent), rgba(255, 8, 8, 0));
-  transition: bottom 0.4s ease;
-  /* suaviza a transição */
-  z-index: 2;
-}
-
-.about_service_box:hover .overlay {
   bottom: 0;
-  /* sobe até cobrir a imagem */
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(11, 13, 18, 0.95) 0%, rgba(11, 13, 18, 0.7) 60%, transparent 100%);
 }
 
-/* ESTILOS DOS CARDS */
-
-
-@media (max-width: 1168px) {
-  h4 {
-    color: var(--secondary-detail);
-    font-size: 22px;
-  }
-
-  h5 {
-    color: var(--secondary-detail);
-    font-size: 25px;
-    width: 100%;
-  }
+.text-gold-sub {
+  color: var(--primary-light);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-@media (max-width: 998px) {
-  .about-content {
-    flex-direction: column;
-  }
-
-  #about-img {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* Uma única coluna */
-    gap: 15px;
-    /* Espaçamento entre os elementos */
-  }
-
-  h4 {
-    color: var(--secondary-detail);
-    /* font-size: 22px; */
-    font-size: 45px;
-    width: 200%;
-  }
-
-  h5 {
-    color: var(--secondary-detail);
-    font-size: 51px;
-    width: 300%;
-  }
+.floating-trust-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  background: #161a25;
+  border: 1px solid var(--primary-light);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 3;
 }
 
-@media (max-width: 768px) {
-  h4 {
-    color: var(--secondary-detail);
-    font-size: 22px;
-  }
-
-  h5 {
-    color: var(--secondary-detail);
-    font-size: 25px;
-    width: 100%;
-  }
-
- .service-text {
-  max-width: 40%;
- }
+.trust-badge-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(197, 168, 128, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-light);
+  font-size: 20px;
 }
 
-/* #about-img {
-    flex-direction: column;
+@media (max-width: 991px) {
+  .about-title {
+    font-size: 30px;
   }
-} */
-
-
-/* @media (max-width: 768px) {
-  #about-img {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* Uma única coluna */
-/* gap: 15px; */
-/* Espaçamento entre os elementos */
+  .floating-trust-badge {
+    position: static;
+    margin-top: 15px;
+  }
+}
