@@ -32,21 +32,21 @@ export class FormViewComponent implements OnInit {
     const { nome, telefone, email, cpf, tipoPrecatorio, detalhes } = this.formulario.value;
 
     const mensagem =
-`⚖️ *CONSULTA DE PRECATÓRIO - WILLIANS INVEST*
+`*CONSULTA DE PRECATÓRIO - WILLIANS INVEST*
 _Negócios em Precatórios_
 
 Olá! Preenchi o formulário no site e gostaria de uma avaliação gratuita do meu precatório:
 
-👤 *Nome:* ${nome}
-📱 *WhatsApp:* ${telefone}
-📧 *E-mail:* ${email}
-📄 *CPF:* ${cpf}
-🏛️ *Tipo de Precatório:* ${tipoPrecatorio}
-${detalhes ? `💬 *Informações do Processo / Valor:* ${detalhes}\n` : ''}
-Aguardando retorno dos especialistas para negociação. Obrigado!`;
+• *Nome:* ${nome}
+• *WhatsApp:* ${telefone}
+• *E-mail:* ${email}
+• *CPF:* ${cpf}
+• *Esfera do Precatório:* ${tipoPrecatorio}
+${detalhes ? `• *Informações do Processo / Valor:* ${detalhes}\n` : ''}
+Aguardando o contato de um consultor para avaliação. Obrigado!`;
 
     const foneComercial = '5511989483916';
-    const whatsappUrl = `https://wa.me/${foneComercial}?text=${encodeURIComponent(mensagem)}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${foneComercial}&text=${encodeURIComponent(mensagem)}`;
 
     // Abre o WhatsApp comercial em nova aba
     window.open(whatsappUrl, '_blank');
