@@ -52,6 +52,6 @@ export class ChecklistComponent implements OnInit {
   enviarDocumentosWhatsapp(): void {
     const telefone = '5511989483916';
     const msg = 'Olá, Willians Invest! Já estou organizando meus documentos para negociação do precatório e gostaria de enviar para análise.';
-    window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=${telefone}&text=${encodeURIComponent(msg)}`, '_blank');
   }
 }

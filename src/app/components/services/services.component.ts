@@ -76,7 +76,7 @@ export class ServicesComponent implements OnInit {
     const phoneNumber = '5511989483916';
     const message = `Olá, Willians Invest! Gostaria de mais informações sobre o serviço de *${option}*.`;
     window.open(
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`,
       '_blank'
     );
   }
